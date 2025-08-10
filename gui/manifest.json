@@ -2,7 +2,7 @@
   "name": "Cờ Tướng",
   "short_name": "Cờ Tướng",
   "description": "Cờ Tướng - Chơi với máy hoặc người khác",
-  "start_url": "/gui/index.html",
+  "start_url": "gui/index.html",
   "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#0a74da",
