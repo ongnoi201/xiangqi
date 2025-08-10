@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="800" height="800" role="img" aria-label="Bàn cờ tướng - viền gỗ 3D - mắt chữ L">
+  <defs>
+    <linearGradient id="woodFrame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c28f5a"/>
+      <stop offset="100%" stop-color="#5a2f16"/>
+    </linearGradient>
+    <linearGradient id="woodInner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0d1a3"/>
+      <stop offset="100%" stop-color="#b0733f"/>
+    </linearGradient>
+    <style>
+      .board-bg { fill: url(#woodFrame); }
+      .inner-frame { fill: url(#woodInner); rx:20; ry:20; }
+      .board-surface { fill: #fdf4dc; stroke: #4a2f18; stroke-width: 2; }
+      .line { stroke: #333; stroke-width: 2; stroke-linecap: round; }
+      .eye { stroke: #333; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .river-text { font-family: "Songti SC", "SimSun", serif; font-size: 44px; fill: #6b3b1b; letter-spacing: 8px; }
+    </style>
+  </defs>
+
+  <!-- Viền gỗ ngoài -->
+  <rect x="0" y="0" width="1000" height="1000" rx="30" ry="30" fill="url(#woodFrame)"/>
+
+  <!-- Viền gỗ trong (nổi) -->
+  <rect x="40" y="40" width="920" height="920" rx="20" ry="20" fill="url(#woodInner)"/>
+
+  <!-- Mặt bàn (giữa) -->
+  <!-- padding để tạo viền gỗ: board từ 100..900 -->
+  <rect x="100" y="100" width="800" height="800" class="board-surface" rx="8" ry="8"/>
+
+  <!-- Kích thước ô: ngang dx = 800/8 = 100 ; dọc dy = 800/9 = 88.8889 -->
+  <!-- Tọa độ ngang: x = 100 + i*100  (i = 0..8) -->
+  <!-- Tọa độ dọc: y = 100 + j*88.8889 (j = 0..9) -->
+
+  <!-- Các đường ngang (10 đường) -->
+  <g class="line">
+    <line x1="100" x2="900" y1="100.0000" y2="100.0000"/>
+    <line x1="100" x2="900" y1="188.8889" y2="188.8889"/>
+    <line x1="100" x2="900" y1="277.7778" y2="277.7778"/>
+    <line x1="100" x2="900" y1="366.6667" y2="366.6667"/>
+    <line x1="100" x2="900" y1="455.5556" y2="455.5556"/>
+    <line x1="100" x2="900" y1="544.4444" y2="544.4444"/>
+    <line x1="100" x2="900" y1="633.3333" y2="633.3333"/>
+    <line x1="100" x2="900" y1="722.2222" y2="722.2222"/>
+    <line x1="100" x2="900" y1="811.1111" y2="811.1111"/>
+    <line x1="100" x2="900" y1="900.0000" y2="900.0000"/>
+  </g>
+
+  <!-- Các đường dọc (9 đường) - mỗi đường bị "ngắt" ở sông (giữa hàng 4 và 5) -->
+  <g class="line">
+    <!-- x = 100,200,...,900 -->
+    <!-- top segment: y = 100 .. 455.5556 ; bottom segment: y = 544.4444 .. 900 -->
+    <line x1="100" x2="100" y1="100.0000" y2="455.5556"/>
+    <line x1="100" x2="100" y1="544.4444" y2="900.0000"/>
+
+    <line x1="200" x2="200" y1="100.0000" y2="455.5556"/>
+    <line x1="200" x2="200" y1="544.4444" y2="900.0000"/>
+
+    <line x1="300" x2="300" y1="100.0000" y2="455.5556"/>
+    <line x1="300" x2="300" y1="544.4444" y2="900.0000"/>
+
+    <line x1="400" x2="400" y1="100.0000" y2="455.5556"/>
+    <line x1="400" x2="400" y1="544.4444" y2="900.0000"/>
+
+    <line x1="500" x2="500" y1="100.0000" y2="455.5556"/>
+    <line x1="500" x2="500" y1="544.4444" y2="900.0000"/>
+
+    <line x1="600" x2="600" y1="100.0000" y2="455.5556"/>
+    <line x1="600" x2="600" y1="544.4444" y2="900.0000"/>
+
+    <line x1="700" x2="700" y1="100.0000" y2="455.5556"/>
+    <line x1="700" x2="700" y1="544.4444" y2="900.0000"/>
+
+    <line x1="800" x2="800" y1="100.0000" y2="455.5556"/>
+    <line x1="800" x2="800" y1="544.4444" y2="900.0000"/>
+
+    <line x1="900" x2="900" y1="100.0000" y2="455.5556"/>
+    <line x1="900" x2="900" y1="544.4444" y2="900.0000"/>
+  </g>
+
+  <!-- Cung (palace) - đúng ở các cột 3..5 (x=400..600) và hàng 0..2 / 7..9 -->
+  <g class="line">
+    <!-- trên -->
+    <line x1="400" y1="100.0000" x2="600" y2="277.7778"/>
+    <line x1="600" y1="100.0000" x2="400" y2="277.7778"/>
+    <!-- dưới -->
+    <line x1="400" y1="722.2222" x2="600" y2="900.0000"/>
+    <line x1="600" y1="722.2222" x2="400" y2="900.0000"/>
+  </g>
+
+  <!-- Chữ "楚 河　　漢 界" ở giữa sông -->
+  <text x="500" y="500" text-anchor="middle" class="river-text">楚 河　　漢 界</text>
+
+  <!-- Mắt pháo/tốt dạng 4 chữ L (tọa độ tính đúng theo grid) -->
+  <g class="eye">
+    <!-- Quy ước: các L nhỏ dùng path giống mẫu (kích thước hợp lý cho ô 100x~89) -->
+    <!-- Pawn (Tốt) - cột 0,2,4,6,8 ở hàng 3 (y ≈ 366.6667) -->
+    <g transform="translate(100,366.6667)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(300,366.6667)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(500,366.6667)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(700,366.6667)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(900,366.6667)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+
+    <!-- Cannon (Pháo) - cột 1,7 ở hàng 2 (y ≈ 277.7778) -->
+    <g transform="translate(200,277.7778)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(800,277.7778)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+
+    <!-- Pawn (Tốt) dưới - cột 0,2,4,6,8 ở hàng 6 (y ≈ 633.3333) -->
+    <g transform="translate(100,633.3333)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(300,633.3333)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(500,633.3333)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(700,633.3333)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(900,633.3333)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+
+    <!-- Cannon (Pháo) dưới - cột 1,7 ở hàng 7 (y ≈ 722.2222) -->
+    <g transform="translate(200,722.2222)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+    <g transform="translate(800,722.2222)"><path d="M-10,-2 h-8 v-8 M10,-2 h8 v-8 M-10,2 h-8 v8 M10,2 h8 v8"/></g>
+  </g>
+</svg>
