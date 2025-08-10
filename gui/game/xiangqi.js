@@ -130,10 +130,13 @@ function highlightMoves(square) {
 function setBot(bot) {
   botName = bot;
   document.getElementById('current-bot-image').src = bots[bot].image;
+  document.getElementById('bot-player-image').src = bots[bot].image;
+  document.getElementById('bot-player-name').innerText = bot === 'Ongnoi' ? 'Ông Nội' : bot === 'Baba' ? 'Ba Ba' : bot === 'Phuvuong' ? 'Phụ Vương' : bot === 'Laoba' ? 'Lão Ba' : bot === 'Hoangde' ? 'Hoàng Đế' : bot === 'Ongchu' ? 'Ông Chú' : bot === 'Laogia' ? 'Lão Già' : bot;
   fixedTime = bots[bot].time;
   fixedDepth = bots[bot].depth;
   book = JSON.parse(JSON.stringify(bots[bot].book));
 }
+
 
 // set board theme
 function setBoardTheme(theme) {
@@ -476,5 +479,5 @@ function newGame() {
 \****************************/
 
 newGame();
-setBot('CMK');
+setBot('Ongnoi');
 

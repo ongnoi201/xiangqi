@@ -18,6 +18,7 @@
 
     <!-- Bootstrap -->
     <link href="https://db.onlinewebfonts.com/c/1ee9941f1b8c128110ca4307dda59917?family=STKaiti" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="libs/css/game.css">
@@ -29,10 +30,16 @@
 
 <body>
     <div id="main">
+        <div id="bot-player">
+            <img id="bot-player-image" src="game/images/bots/may1.jpg" alt="bot play">
+            <span id="bot-player-name">Ông Nội</span>
+        </div>
+
         <!-- Chess board view -->
         <div id="xiangqiboard" style="border: 1px solid black;
                   background: url(game/images/boards/board-ccbridge.png);
                   background-size: contain;"></div>
+
 
         <div class="btn-group mt-1 mb-1" style="width: 420px;">
             <!-- Bots -->
@@ -44,44 +51,44 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 420px;">
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('Baihua');">
+                        <button class="btn col-9 text-left" onclick="setBot('Ongnoi');">
                             <img class="image-level" src="game/images/bots/may1.jpg"></img>
                             Ông Nội (level 1)
                         </button>
                     </li>
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('CMK');">
+                        <button class="btn col-9 text-left" onclick="setBot('Baba');">
                             <img class="image-level" src="game/images/bots/may2.jpg"></img>
                             BaBa (level 2)
                         </button>
                     </li>
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('HGM');">
+                        <button class="btn col-9 text-left" onclick="setBot('Phuvuong');">
                             <img class="image-level" src="game/images/bots/may3.jpg"></img>
                             Phụ Vương (level 3)
                         </button>
                     </li>
 
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('Haucheng');">
+                        <button class="btn col-9 text-left" onclick="setBot('Laoba');">
                             <img class="image-level" src="game/images/bots/may4.jpg"></img>
                             Lão Ba (level 4)
                         </button>
                     </li>
                     <li class="list-group-item-action">
-                        <button class="btn text-left" onclick="setBot('Wukong');">
+                        <button class="btn text-left" onclick="setBot('Hoangde');">
                             <img class="image-level" src="game/images/bots/may5.jpg"></img>
                             Hoàng Đế (level 5)
                         </button>
                     </li>
                     <li class="list-group-item-action">
-                        <button class="btn text-left" onclick="setBot('Huronghua');">
+                        <button class="btn text-left" onclick="setBot('Ongchu');">
                             <img class="image-level" src="game/images/bots/may6.jpg"></img>
                             Ông Chú (level 6)
                         </button>
                     </li>
                     <li class="list-group-item-action">
-                        <button class="btn text-left" onclick="setBot('Liudahua');">
+                        <button class="btn text-left" onclick="setBot('Laogia');">
                             <img class="image-level" src="game/images/bots/may7.jpg"></img>
                             Lão Già (level 7)
                         </button>
@@ -91,11 +98,11 @@
             </div>
 
             <!-- Game controls -->
-            <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
                 onclick="newGame();">New</button>
-            <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
                 onclick="undo();">Undo</button>
-            <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold"
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold"
                 onclick="flipBoard()">Flip</button>
 
             <!-- Change pieces bitmaps -->
@@ -157,13 +164,13 @@
                     </div>
 
                     <div class="dropdown-divider"></div>
-
-                    <!-- Download PGN -->
-                    <!-- <div class="text-center">
-                        <button class="btn btn-sm btn-outline-success" onclick="downloadPgn();">Download PGN</button>
-                    </div> -->
                 </div>
             </div>
+        </div>
+
+        <div id="person-player">
+            <img id="person-player-image" src="game/images/bots/may1.jpg" alt="person play">
+            <span>Hoàng Duy</span>
         </div>
     </div>
 

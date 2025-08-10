@@ -3,14 +3,16 @@ body {
     font-family: 'Noto Serif', serif !important;
     font-size: 16px;
     min-height: 100vh;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(205, 133, 63, 0.6) 80%), 
-                linear-gradient(135deg, #d2a679, #cd853f);
+    background:
+        url('https://www.transparenttextures.com/patterns/wood-pattern.png') repeat,
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(205, 133, 63, 0.6) 80%),
+        linear-gradient(135deg, #d2a679, #cd853f);
     background-blend-mode: multiply;
-    font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 #current-bot-image{
     width: 25px;
@@ -35,4 +37,38 @@ body {
 
 .btn{
     border-radius: 5px !important;
+}
+
+.btn-controls {
+    background-color: #fff;
+    border: 1px solid #d2a679 !important;
+    box-shadow: rgba(138, 138, 160, 0.25) 0px 10px 40px -10px inset, rgba(138, 90, 90, 0.3) 0px 10px 20px -10px inset;
+}
+
+
+#bot-player, #person-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px
+}
+
+#bot-player-image, #person-player-image {
+    width: 180px;
+    height: 180px;
+    border: 4px solid #d48b42;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#bot-player span, #person-player span {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+#xiangqiboard{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
