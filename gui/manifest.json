@@ -1,0 +1,17 @@
+{
+  "name": "Cờ Tướng",
+  "short_name": "Cờ Tướng",
+  "description": "Cờ Tướng - Chơi với máy hoặc người khác",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "fullscreen",
+  "background_color": "#ffffff",
+  "theme_color": "#0a74da",
+  "icons": [
+    {
+      "src": "game/images/misc/icon.png",
+      "sizes": "366x315",
+      "type": "image/png"    
+    }
+  ]
+}
