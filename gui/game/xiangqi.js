@@ -178,27 +178,27 @@ function dragOver(event, square) {
 function dropPiece(event, square) {
     userTarget = square;
     let valid = validateMove(userSource, userTarget);
-    movePiece(userSource, userTarget);
-    if (engine.getPiece(userTarget) == 0) valid = 0;
     clickLock = 0;
 
-    if (engine.getPiece(square) && valid) {
-        highlightPiece(square);
-        playSound(valid);
+    if (engine.getPiece(userTarget) === 0 && valid === 0) {
+        drawBoard();
     }
 
     event.preventDefault();
-    if (valid){
-        personPlayerImage.classList.remove('is-thinking');
-        botPlayerImage.classList.add('is-thinking');
-        setTimeout(function () { think(); }, 100);
+    if (valid) {
+        const afterPlayerMove = () => {
+            personPlayerImage.classList.remove('is-thinking');
+            botPlayerImage.classList.add('is-thinking');
+            setTimeout(think, 100);
+        };
+        animateAndMovePiece(userSource, userTarget, valid, afterPlayerMove);
     }
 }
 
 function tapPiece(square) {
     const clickSquare = parseInt(square, 10);
     const clickedPiece = engine.getPiece(clickSquare);
-    const playerSide = engine.getSide(); // Lấy bên đang có lượt đi
+    const playerSide = engine.getSide(); 
 
     if (clickLock) {
         if (clickedPiece && engine.getPieceColor(clickedPiece) === playerSide) {
@@ -220,11 +220,12 @@ function tapPiece(square) {
         clickLock = 0;
 
         if (valid) {
-            playSound(valid);
-            movePiece(userSource, userTarget);
-            personPlayerImage.classList.remove('is-thinking');
-            botPlayerImage.classList.add('is-thinking');
-            setTimeout(think, 100);
+            const afterPlayerMove = () => {
+                personPlayerImage.classList.remove('is-thinking');
+                botPlayerImage.classList.add('is-thinking');
+                setTimeout(think, 100);
+            };
+            animateAndMovePiece(userSource, userTarget, valid, afterPlayerMove);
         } else {
             drawBoard();
         }
@@ -316,15 +317,7 @@ function think() {
     let targetSquare = engine.getTargetSquare(bestMove);
 
     setTimeout(function () {
-        movePiece(sourceSquare, targetSquare);
-        document.querySelectorAll('.selected-piece').forEach(img => {
-            img.classList.remove('selected-piece');
-        });
-        const td = document.getElementById(targetSquare);
-        if (td && td.firstChild && td.firstChild.tagName === 'IMG') {
-            td.firstChild.classList.add('selected-piece');
-        }
-        playSound(bestMove);
+        animateAndMovePiece(sourceSquare, targetSquare, bestMove);
         userTime = Date.now();
         botPlayerImage.classList.remove('is-thinking');
         personPlayerImage.classList.add('is-thinking');
@@ -356,6 +349,47 @@ function movePiece(userSource, userTarget) {
     } else if (engine.inCheck(engine.getSide())) {
         CHECK_SOUND.play();
     }
+}
+
+
+function animateAndMovePiece(source, target, move, onComplete) {
+    const sourceTD = document.getElementById(source);
+    const targetTD = document.getElementById(target);
+
+    if (!sourceTD || !targetTD || !sourceTD.firstChild) {
+        movePiece(source, target);
+        playSound(move);
+        if (onComplete) onComplete();
+        return;
+    }
+
+    const pieceToAnimate = sourceTD.firstChild;
+    const sourceRect = sourceTD.getBoundingClientRect();
+    const targetRect = targetTD.getBoundingClientRect();
+    
+    const animatedPiece = pieceToAnimate.cloneNode(true);
+    animatedPiece.style.position = 'absolute';
+    animatedPiece.style.left = `${sourceRect.left}px`;
+    animatedPiece.style.top = `${sourceRect.top}px`;
+    animatedPiece.style.zIndex = '1000';
+    animatedPiece.style.transition = 'left 0.3s ease-in-out, top 0.3s ease-in-out';
+    
+    document.body.appendChild(animatedPiece);
+    pieceToAnimate.style.visibility = 'hidden';
+
+    requestAnimationFrame(() => {
+        animatedPiece.style.left = `${targetRect.left}px`;
+        animatedPiece.style.top = `${targetRect.top}px`;
+    });
+
+    setTimeout(() => {
+        document.body.removeChild(animatedPiece);
+        movePiece(source, target);  
+        playSound(move);
+        if (onComplete) {
+            onComplete();
+        }
+    }, 300); 
 }
 
 function undo() {
