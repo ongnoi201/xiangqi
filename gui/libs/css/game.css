@@ -55,8 +55,8 @@ body {
 }
 
 #bot-player-image, #person-player-image {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border: 4px solid #d48b42;
     border-radius: 50%;
     object-fit: cover;
