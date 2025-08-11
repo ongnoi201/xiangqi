@@ -2,77 +2,81 @@
 <svg width="67" height="67" viewBox="0 0 67 67" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="gJade" cx="35%" cy="30%" r="80%">
-      <stop offset="0%" stop-color="#b7f0e0"/>
-      <stop offset="40%" stop-color="#5fd3c1"/>
-      <stop offset="100%" stop-color="#1f8f7f"/>
+      <stop offset="0%" stop-color="#b7f0e0" />
+      <stop offset="40%" stop-color="#5fd3c1" />
+      <stop offset="100%" stop-color="#1f8f7f" />
     </radialGradient>
     <linearGradient id="gRim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#134c47"/>
-      <stop offset="50%" stop-color="#0f3a37"/>
-      <stop offset="100%" stop-color="#072826"/>
+      <stop offset="0%" stop-color="#134c47" />
+      <stop offset="50%" stop-color="#0f3a37" />
+      <stop offset="100%" stop-color="#072826" />
     </linearGradient>
     <radialGradient id="gSoftShine" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="white" stop-opacity="0.55"/>
-      <stop offset="40%" stop-color="white" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+      <stop offset="0%" stop-color="white" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="white" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="white" stop-opacity="0" />
     </radialGradient>
     <radialGradient id="gInnerBevel" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
-      <stop offset="60%" stop-color="#000000" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.18" />
     </radialGradient>
     <filter id="fDrop" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur"/>
-      <feOffset in="blur" dx="0" dy="2" result="off"/>
-      <feFlood flood-color="#000" flood-opacity="0.35"/>
-      <feComposite in2="off" operator="in"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur" />
+      <feOffset in="blur" dx="0" dy="2" result="off" />
+      <feFlood flood-color="#000" flood-opacity="0.35" />
+      <feComposite in2="off" operator="in" />
       <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
     <filter id="fSpec" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.15" result="blur2"/>
-      <feSpecularLighting in="blur2" surfaceScale="1" specularConstant="0.6" specularExponent="18" lighting-color="#ffffff" result="specOut">
-        <fePointLight x="-30" y="-60" z="90"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.15" result="blur2" />
+      <feSpecularLighting in="blur2" surfaceScale="1" specularConstant="0.6" specularExponent="18"
+        lighting-color="#ffffff" result="specOut">
+        <fePointLight x="-30" y="-60" z="90" />
       </feSpecularLighting>
-      <feComposite in="specOut" in2="SourceGraphic" operator="in" result="specComp"/>
+      <feComposite in="specOut" in2="SourceGraphic" operator="in" result="specComp" />
       <feMerge>
-        <feMergeNode in="SourceGraphic"/>
-        <feMergeNode in="specComp"/>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="specComp" />
       </feMerge>
     </filter>
     <clipPath id="clipFace">
-      <circle cx="33.5" cy="33.5" r="28"/>
+      <circle cx="33.5" cy="33.5" r="28" />
     </clipPath>
     <pattern id="pNoise" patternUnits="userSpaceOnUse" width="1.7" height="1.7">
-      <rect width="1.7" height="1.7" fill="transparent"/>
-      <circle cx="0.4" cy="0.4" r="0.25" fill="#000" opacity="0.03"/>
+      <rect width="1.7" height="1.7" fill="transparent" />
+      <circle cx="0.4" cy="0.4" r="0.25" fill="#000" opacity="0.03" />
     </pattern>
   </defs>
 
   <g filter="url(#fDrop)">
-    <circle cx="33.5" cy="33.5" r="32.5" fill="url(#gRim)"/>
-    <circle cx="33.5" cy="33.5" r="28" fill="url(#gJade)"/>
+    <circle cx="33.5" cy="33.5" r="32.5" fill="url(#gRim)" />
+    <circle cx="33.5" cy="33.5" r="28" fill="url(#gJade)" />
   </g>
 
-  <circle cx="33.5" cy="33.5" r="28" fill="url(#gInnerBevel)" opacity="0.85" style="mix-blend-mode:multiply"/>
+  <circle cx="33.5" cy="33.5" r="28" fill="url(#gInnerBevel)" opacity="0.85"
+    style="mix-blend-mode:multiply" />
 
   <g clip-path="url(#clipFace)">
-    <circle cx="33.5" cy="31" r="28" fill="url(#gSoftShine)"/>
+    <circle cx="33.5" cy="31" r="28" fill="url(#gSoftShine)" />
   </g>
 
   <g filter="url(#fSpec)" opacity="0.98">
-    <circle cx="33.5" cy="33.5" r="28" fill="url(#pNoise)"/>
+    <circle cx="33.5" cy="33.5" r="28" fill="url(#pNoise)" />
   </g>
 
   <!-- Chữ thư pháp đen -->
-  <text x="33.5" y="36" text-anchor="middle" dominant-baseline="middle"
-        font-family="'KaiTi', 'STKaiti', 'DFKai-SB', 'FangSong', serif"
-        font-size="25" font-weight="bold"
-        fill="#000000"
-        stroke="#ffffff" stroke-width="0.3" stroke-opacity="0.08"
-        style="filter: drop-shadow(0 1px 0.7px rgba(0,0,0,0.25));">
-    卒
-  </text>
+  <g transform="translate(33.5,33.5) scale(1.1) translate(-20,-22)" fill="#000000ff"
+    stroke="#ffffff" stroke-width="0.3" stroke-opacity="0.08"
+    style="filter: drop-shadow(0 1px 0.7px rgba(0,0,0,0.25));">
+    <path
+      d='M27.6897 10.9062C27.4767 11.7713 28.6033 12.2374 28.49 13.077C28.3904 13.7889 26.7039 14.405 27.1298 15.4681C30.5233 16.0012 34.6105 16.5056 34.219 20.643C34.1365 21.5177 34.0987 21.6167 33.1267 21.5433C30.9011 21.3741 29.2868 19.0564 27.4939 18.054C24.2104 16.2151 23.3998 19.2447 21.2772 20.8537C22.7884 21.3964 22.9464 22.3031 22.1942 23.5673C26.2196 23.7939 30.2485 24.0589 34.2739 24.3111C35.3009 24.3749 36.4584 24.3302 37.4784 24.4196C38.7321 24.5314 39.1923 24.774 39.6835 25.8818C40.1334 26.9001 40.5422 29.2976 38.9794 29.5275C33.7965 27.5354 27.8717 26.3989 22.3076 27.5578C22.2286 27.6152 21.7374 29.2721 21.7374 29.3679V43.9987H18.818C18.7149 43.9987 18.2066 43.2804 18.1997 43.0984C18.1826 42.6706 18.6634 41.349 18.7458 40.7392C19.3126 36.4869 17.9181 32.19 18.4161 27.9281L1.7546 30.8906C0.322347 30.6448 0.0613133 29.0199 0.0887905 27.8866L17.5609 24.6399C18.0658 24.343 18.1104 22.3126 18.3302 21.6295C19.4706 18.0763 24.1623 15.3436 23.9081 11.2222C21.9641 11.1232 19.9961 11.6372 18.3783 12.6269C15.7405 14.239 14.875 16.6908 18.0795 18.3125C17.6021 19.5129 17.9524 20.6717 16.1218 20.2184C15.3593 20.0301 14.638 19.3948 13.8824 19.3214C10.7877 19.0085 8.29762 23.7524 5.76971 23.679C3.63335 23.6183 6.28147 21.0037 6.85163 20.4259C8.67543 18.5743 11.248 17.0069 12.4845 14.7019C12.7901 14.1305 13.3981 13.093 12.196 13.1472C10.9011 13.2047 8.32853 14.7211 7.22257 14.2327C7.05084 14.156 7.03366 14.0826 6.9581 13.9453C6.70394 13.4856 5.85214 11.2318 5.73193 10.721C5.70445 10.6061 5.69415 10.4911 5.70445 10.373L31.8662 7.0625L32.1582 7.11996L32.7008 10.6635C32.7455 10.7497 32.5909 10.903 32.5532 10.903H27.6862L27.6897 10.9062Z'
+    />
+    <path
+      d='M20.2229 0.713701L23.4 6.75055L23.4515 7.07298C21.4972 7.17833 17.9835 7.49757 16.9394 5.51828C16.1254 3.97315 17.2897 1.72569 17.9732 0.279533C18.2549 0.113528 19.7936 0.700931 20.2195 0.713701H20.2229Z'
+    />
+  </g>
 </svg>

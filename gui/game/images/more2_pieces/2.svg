@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67" width="67" height="67" aria-label="Chess piece" role="img">
+  <defs>
+    <radialGradient id="lightGrad" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#fffaf0"/>
+      <stop offset="50%" stop-color="#f4e1be"/>
+      <stop offset="100%" stop-color="#cfae82"/>
+    </radialGradient>
+    <radialGradient id="rimHighlight" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f4e1be" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="innerDip" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#d8b88f"/>
+      <stop offset="100%" stop-color="#a67c52"/>
+    </radialGradient>
+    <radialGradient id="innerFlat" cx="35%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#fdf8f0"/>
+      <stop offset="100%" stop-color="#f4e1be"/>
+    </radialGradient>
+
+    <filter id="dropShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feOffset dx="0.5" dy="0.8" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="0.9" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.28" result="shadow"/>
+      <feBlend in="SourceGraphic" in2="shadow" mode="normal"/>
+    </filter>
+
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="blur"/>
+      <feOffset dx="0" dy="0.3"/>
+      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.36"/>
+      <feBlend in="SourceGraphic" mode="normal"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#dropShadow)">
+    <!-- outer bead (soft) -->
+    <circle cx="33.5" cy="33.5" r="31.5" fill="url(#lightGrad)"/>
+
+    <!-- bright ridge (rim2) -->
+    <circle cx="33.5" cy="33.5" r="29.5" fill="url(#rimHighlight)"/>
+
+    <!-- inner dip -->
+    <circle cx="33.5" cy="33.5" r="26.5" fill="url(#innerDip)"/>
+
+    <!-- red ring (vòng đỏ) -->
+    <circle cx="33.5" cy="33.5" r="23.0" fill="none" stroke="#000000ff" stroke-width="1.8"/>
+
+    <!-- inner flat area -->
+    <circle cx="33.5" cy="33.5" r="21.6" fill="url(#innerFlat)" filter="url(#innerShadow)"/>
+  </g>
+
+  <!-- character (styled text as smooth vector-like) -->
+  <text x="33.5" y="36.5" text-anchor="middle" dominant-baseline="middle"
+        font-family="STKaiti, 'FZKai-Z03', 'Noto Serif CJK SC', 'DejaVu Serif', serif"
+        font-size="22" font-weight="700"
+        fill="#c00"
+        stroke="#c00" stroke-width="0.6" paint-order="stroke fill"
+        style="filter: drop-shadow(0 0 0.6px rgba(0,0,0,0.08));">
+    仕
+  </text>
+</svg>

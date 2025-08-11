@@ -2,77 +2,77 @@
 <svg width="67" height="67" viewBox="0 0 67 67" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="gJade" cx="35%" cy="30%" r="80%">
-      <stop offset="0%" stop-color="#b7f0e0"/>
-      <stop offset="40%" stop-color="#5fd3c1"/>
-      <stop offset="100%" stop-color="#1f8f7f"/>
+      <stop offset="0%" stop-color="#b7f0e0" />
+      <stop offset="40%" stop-color="#5fd3c1" />
+      <stop offset="100%" stop-color="#1f8f7f" />
     </radialGradient>
     <linearGradient id="gRim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#134c47"/>
-      <stop offset="50%" stop-color="#0f3a37"/>
-      <stop offset="100%" stop-color="#072826"/>
+      <stop offset="0%" stop-color="#134c47" />
+      <stop offset="50%" stop-color="#0f3a37" />
+      <stop offset="100%" stop-color="#072826" />
     </linearGradient>
     <radialGradient id="gSoftShine" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="white" stop-opacity="0.55"/>
-      <stop offset="40%" stop-color="white" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+      <stop offset="0%" stop-color="white" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="white" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="white" stop-opacity="0" />
     </radialGradient>
     <radialGradient id="gInnerBevel" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
-      <stop offset="60%" stop-color="#000000" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.18" />
     </radialGradient>
     <filter id="fDrop" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur"/>
-      <feOffset in="blur" dx="0" dy="2" result="off"/>
-      <feFlood flood-color="#000" flood-opacity="0.35"/>
-      <feComposite in2="off" operator="in"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur" />
+      <feOffset in="blur" dx="0" dy="2" result="off" />
+      <feFlood flood-color="#000" flood-opacity="0.35" />
+      <feComposite in2="off" operator="in" />
       <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
     <filter id="fSpec" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.15" result="blur2"/>
-      <feSpecularLighting in="blur2" surfaceScale="1" specularConstant="0.6" specularExponent="18" lighting-color="#ffffff" result="specOut">
-        <fePointLight x="-30" y="-60" z="90"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.15" result="blur2" />
+      <feSpecularLighting in="blur2" surfaceScale="1" specularConstant="0.6" specularExponent="18"
+        lighting-color="#ffffff" result="specOut">
+        <fePointLight x="-30" y="-60" z="90" />
       </feSpecularLighting>
-      <feComposite in="specOut" in2="SourceGraphic" operator="in" result="specComp"/>
+      <feComposite in="specOut" in2="SourceGraphic" operator="in" result="specComp" />
       <feMerge>
-        <feMergeNode in="SourceGraphic"/>
-        <feMergeNode in="specComp"/>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="specComp" />
       </feMerge>
     </filter>
     <clipPath id="clipFace">
-      <circle cx="33.5" cy="33.5" r="28"/>
+      <circle cx="33.5" cy="33.5" r="28" />
     </clipPath>
     <pattern id="pNoise" patternUnits="userSpaceOnUse" width="1.7" height="1.7">
-      <rect width="1.7" height="1.7" fill="transparent"/>
-      <circle cx="0.4" cy="0.4" r="0.25" fill="#000" opacity="0.03"/>
+      <rect width="1.7" height="1.7" fill="transparent" />
+      <circle cx="0.4" cy="0.4" r="0.25" fill="#000" opacity="0.03" />
     </pattern>
   </defs>
 
   <g filter="url(#fDrop)">
-    <circle cx="33.5" cy="33.5" r="32.5" fill="url(#gRim)"/>
-    <circle cx="33.5" cy="33.5" r="28" fill="url(#gJade)"/>
+    <circle cx="33.5" cy="33.5" r="32.5" fill="url(#gRim)" />
+    <circle cx="33.5" cy="33.5" r="28" fill="url(#gJade)" />
   </g>
 
-  <circle cx="33.5" cy="33.5" r="28" fill="url(#gInnerBevel)" opacity="0.85" style="mix-blend-mode:multiply"/>
+  <circle cx="33.5" cy="33.5" r="28" fill="url(#gInnerBevel)" opacity="0.85"
+    style="mix-blend-mode:multiply" />
 
   <g clip-path="url(#clipFace)">
-    <circle cx="33.5" cy="31" r="28" fill="url(#gSoftShine)"/>
+    <circle cx="33.5" cy="31" r="28" fill="url(#gSoftShine)" />
   </g>
 
   <g filter="url(#fSpec)" opacity="0.98">
-    <circle cx="33.5" cy="33.5" r="28" fill="url(#pNoise)"/>
+    <circle cx="33.5" cy="33.5" r="28" fill="url(#pNoise)" />
   </g>
 
-  <!-- Chữ thư pháp đen -->
-  <text x="33.5" y="36" text-anchor="middle" dominant-baseline="middle"
-        font-family="'KaiTi', 'STKaiti', 'DFKai-SB', 'FangSong', serif"
-        font-size="25" font-weight="bold"
-        fill="#000000"
-        stroke="#ffffff" stroke-width="0.3" stroke-opacity="0.08"
-        style="filter: drop-shadow(0 1px 0.7px rgba(0,0,0,0.25));">
-    士
-  </text>
+  <g transform="translate(33.5,33.5) scale(1.1) translate(-20,-22)" fill="#000000ff"
+    stroke="#ffffff" stroke-width="0.3" stroke-opacity="0.08"
+    style="filter: drop-shadow(0 1px 0.7px rgba(0,0,0,0.25));">
+    <path
+      d='M17.8357 22.9913L2.47497 26.1381L0 23.1062L17.6596 19.1587C17.7425 18.995 17.7977 18.8105 17.8219 18.6261C18.1981 15.7089 18.1049 10.8459 17.9531 7.84178C17.9013 6.83228 17.4387 5.18923 17.4836 4.37118C17.5561 2.96484 18.8264 2.87782 19.9103 3.0832C20.5557 3.20852 22.7339 3.9465 22.8685 4.61834L22.0884 18.2327C27.1798 17.9751 32.261 17.6061 37.3352 17.4181C37.5768 17.4634 38.9196 19.1969 39.1439 19.5416C41.4601 23.0609 38.6365 23.0156 35.8405 22.7581C33.7314 22.5631 31.6396 22.0444 29.5167 21.94C27.0418 21.8182 24.5633 22.1663 22.0918 22.0618V32.9123C22.0918 33.0271 22.8443 33.5388 23.0135 33.6085C25.4746 34.6528 29.0887 32.1569 30.9907 33.4518C31.7604 33.974 32.6096 36.0626 32.6648 36.9886C32.8133 39.4705 30.8975 38.3845 29.3787 38.2069C22.0918 37.3436 15.2123 39.0633 8.04971 39.9997C6.75181 39.2512 5.81981 37.8762 5.86469 36.3341C6.48257 36.5047 6.97273 36.3585 7.53538 36.3341C9.22333 36.261 10.894 36.1218 12.5647 35.8363C13.2896 35.711 17.8322 34.7711 17.8322 34.0714V22.9913H17.8357Z'
+    />
+  </g>
 </svg>

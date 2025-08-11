@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000" version="1.1">
+  <defs>
+    <!-- Hiệu ứng nổi -->
+    <filter id="raised" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="2" dy="2" result="off1"/>
+      <feMerge>
+        <feMergeNode in="off1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="redStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6f0000"/>
+      <stop offset="50%" stop-color="#9b0000"/>
+      <stop offset="100%" stop-color="#4a0000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Viền ngoài trắng với hiệu ứng nổi -->
+  <rect x="0" y="0" width="900" height="1000" rx="20" ry="20" fill="#e7914a" stroke="url(#redStroke)" stroke-width="14" filter="url(#raised)" />
+
+  <!-- Nền trong màu trắng với hiệu ứng nổi nhẹ -->
+  <rect x="50" y="50" width="800" height="900" fill="#d0ebda" stroke="#000" stroke-width="2" filter="url(#raised)" />
+
+  <!-- Lưới không kẻ qua sông, có hiệu ứng nổi -->
+  <g stroke="#000" stroke-width="2" filter="url(#raised)">
+    <!-- Kẻ ngang -->
+    <line x1="50" y1="50" x2="850" y2="50" />
+    <line x1="50" y1="150" x2="850" y2="150" />
+    <line x1="50" y1="250" x2="850" y2="250" />
+    <line x1="50" y1="350" x2="850" y2="350" />
+    <line x1="50" y1="450" x2="850" y2="450" />
+    <line x1="50" y1="550" x2="850" y2="550" />
+    <line x1="50" y1="650" x2="850" y2="650" />
+    <line x1="50" y1="750" x2="850" y2="750" />
+    <line x1="50" y1="850" x2="850" y2="850" />
+    <line x1="50" y1="950" x2="850" y2="950" />
+    <!-- Kẻ dọc trên sông -->
+    <line x1="50" y1="50" x2="50" y2="450" />
+    <line x1="150" y1="50" x2="150" y2="450" />
+    <line x1="250" y1="50" x2="250" y2="450" />
+    <line x1="350" y1="50" x2="350" y2="450" />
+    <line x1="450" y1="50" x2="450" y2="450" />
+    <line x1="550" y1="50" x2="550" y2="450" />
+    <line x1="650" y1="50" x2="650" y2="450" />
+    <line x1="750" y1="50" x2="750" y2="450" />
+    <line x1="850" y1="50" x2="850" y2="450" />
+    <!-- Kẻ dọc dưới sông -->
+    <line x1="50" y1="550" x2="50" y2="950" />
+    <line x1="150" y1="550" x2="150" y2="950" />
+    <line x1="250" y1="550" x2="250" y2="950" />
+    <line x1="350" y1="550" x2="350" y2="950" />
+    <line x1="450" y1="550" x2="450" y2="950" />
+    <line x1="550" y1="550" x2="550" y2="950" />
+    <line x1="650" y1="550" x2="650" y2="950" />
+    <line x1="750" y1="550" x2="750" y2="950" />
+    <line x1="850" y1="550" x2="850" y2="950" />
+  </g>
+
+  <!-- Cung X với hiệu ứng nổi -->
+  <g stroke="#000" stroke-width="2" filter="url(#raised)">
+    <line x1="350" y1="50" x2="550" y2="250" />
+    <line x1="550" y1="50" x2="350" y2="250" />
+    <line x1="350" y1="750" x2="550" y2="950" />
+    <line x1="550" y1="750" x2="350" y2="950" />
+  </g>
+</svg>

@@ -103,18 +103,55 @@
 
             <!-- Game controls -->
             <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
-                onclick="newGame();">New</button>
+                onclick="newGame();">+</button>
             <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
-                onclick="undo();">Undo</button>
+                onclick="undo();"><i class="bi bi-arrow-counterclockwise"></i></button>
             <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold"
-                onclick="flipBoard()">Flip</button>
+                onclick="flipBoard()"><i class="bi bi-yin-yang"></i></button>
+
+            <div class="dropdown ml-1">
+                <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <image id="current-promoted-image" src="game/images/romanized_pieces/14.svg" style="width: 25px;">
+                        </img>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
+                    style="width: 202px;">
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('romanized_pieces');">
+                        <button class="btn">Phương tây
+                            <img src="game/images/romanized_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('traditional_pieces');">
+                        <button class="btn">Truyền thống
+                            <img src="game/images/traditional_pieces/7.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more1_pieces');">
+                        <button class="btn">Xanh ngọc
+                            <img src="game/images/more1_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more2_pieces');">
+                        <button class="btn">Khối gỗ
+                            <img src="game/images/more2_pieces/7.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more3_pieces');">
+                        <button class="btn">Khối nhựa
+                            <img src="game/images/more3_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                </div>
+            </div>
 
             <!-- Change pieces bitmaps -->
             <div class="dropdown ml-1">
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-promoted-image" src="game/images/romanized_pieces/14.svg" style="width: 25px;">
+                    <image id="current-promoted-image" src="game/images/boards/board_dark.png" style="width: 25px; height: 25px;">
                         </img>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
@@ -137,22 +174,13 @@
                             <img src="game/images/boards/board_dark.png" class="mr-2" style="width: 30px;" />
                         </button>
                     </li>
-                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('romanized_pieces');">
-                        <button class="btn">Romanized
-                            <img src="game/images/romanized_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                    <li class="list-group-item-action mb-1"
+                        onclick="setBoardTheme('game/images/boards/board_good.svg');">
+                        <button class="btn">Good theme
+                            <img src="game/images/boards/board_good.svg" class="mr-2" style="width: 30px;" />
                         </button>
                     </li>
-                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('traditional_pieces');">
-                        <button class="btn">Traditional
-                            <img src="game/images/traditional_pieces/7.svg" class="mr-2" style="width: 30px;"></img>
-                        </button>
-                    </li>
-                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more1_pieces');">
-                        <button class="btn">Xanh ngọc
-                            <img src="game/images/more1_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
-                        </button>
-                    </li>
-
+                    
                     <div class="dropdown-divider"></div>
 
                     <!-- Show legal moves -->

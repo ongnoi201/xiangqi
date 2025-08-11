@@ -47,9 +47,15 @@ function drawBoard() {
 
             pieceImage += 'src="game/images/' + pieceFolder + '/' + piece + '.svg' + '"></img>';
             if (engine.squareToString(square) != 'xx') {
+                let styles = '';
+                if (square == lastMoveSource) {
+                    styles = 'style="background-image: radial-gradient(circle, rgba(38, 126, 17, 0.47) 25%, transparent 26%); background-position: center; background-repeat: no-repeat;"';
+                }
+
                 chessBoard +=
                     '<td align="center" id="' + square +
                     '" width="' + CELL_WIDTH + 'px" height="' + CELL_HEIGHT + 'px" ' +
+                    styles +
                     ' onclick="tapPiece(this.id)" ' +
                     ' ondragstart="dragPiece(event, this.id)" ' +
                     ' ondragover="dragOver(event, this.id)"' +
@@ -128,6 +134,7 @@ var fixedDepth = 0;
 var clickLock = 0;
 var allowBook = 1;
 var userSource, userTarget;
+var lastMoveSource = null;
 
 function highlightPiece(square) {
     if (document.getElementById('editMode').checked) return;
@@ -267,11 +274,7 @@ function getBookMove() {
 
 function isGameOver() {
     if (engine.generateLegalMoves().length === 0) {
-        if (engine.inCheck(engine.getSide())) {
-            gameResult = (engine.getSide() === 0 ? 'game/images/misc/lose.png' : 'game/images/misc/win.png');
-        } else {
-            gameResult = 'game/images/misc/draw.png';
-        }
+        gameResult = (engine.getSide() === 0 ? 'game/images/misc/lose.png' : 'game/images/misc/win.png');
         return 1;
     }
     return 0;
@@ -329,9 +332,12 @@ function think() {
 }
 
 function movePiece(userSource, userTarget) {
+    lastMoveSource = parseInt(userSource);
+
     let moveString = engine.squareToString(userSource) + engine.squareToString(userTarget);
     engine.loadMoves(moveString);
     drawBoard();
+
     if (isGameOver()) {
         if (gameResult.includes('win.png')) {
             WIN_SOUND.play();
@@ -354,10 +360,19 @@ function movePiece(userSource, userTarget) {
 
 function undo() {
     gameResult = '*';
+    lastMoveSource = null;
+    const isEditMode = document.getElementById('editMode').checked;
     try {
-        engine.takeBack();
+        if (isEditMode) {
+            engine.takeBack();
+        } else {
+            engine.takeBack();
+            engine.takeBack();
+        }
         drawBoard();
-    } catch (e) { }
+    } catch (e) {
+        
+    }
 }
 
 function validateMove(userSource, userTarget) {
@@ -382,6 +397,7 @@ function newGame() {
     gameResult = '';
     userTime = 0;
     allowBook = 1;
+    lastMoveSource = null;
     engine.setBoard(engine.START_FEN);
     drawBoard();
     personPlayerImage.classList.add('is-thinking');
