@@ -52,12 +52,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px
+    margin: 5px;;
 }
 
 #bot-player-image, #person-player-image {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border: 4px solid #d48b42;
     border-radius: 50%;
     object-fit: cover;
@@ -67,7 +67,7 @@ body {
 #bot-player span, #person-player span {
     font-size: 20px;
     color: #ffffff;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 #xiangqiboard{
