@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    overflow: hidden; 
+    overflow: hidden;
     font-family: 'Noto Serif', serif !important;
     font-size: 16px;
     min-height: 100vh;
@@ -14,7 +14,7 @@ body {
     align-items: center;
 }
 
-#main{
+#main {
     position: relative;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 
-#current-bot-image{
+#current-bot-image {
     width: 25px;
     height: 25px;
     object-fit: cover;
@@ -50,7 +50,7 @@ body {
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.btn{
+.btn {
     border-radius: 5px !important;
 }
 
@@ -61,28 +61,63 @@ body {
 }
 
 
-#bot-player, #person-player {
+#bot-player,
+#person-player {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5px;;
+    margin: 5px;
+    ;
 }
 
-#bot-player-image, #person-player-image {
+.player-avatar {
     width: 130px;
     height: 130px;
-    border: 4px solid #d48b42;
+    position: relative;
+    /* BIẾN THÀNH "MỎ NEO" ĐỂ ĐỊNH VỊ */
     border-radius: 50%;
+}
+
+.player-avatar img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #d48b42;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-#bot-player span, #person-player span {
+
+#bot-player span,
+#person-player span {
     font-size: 20px;
     color: #ffffff;
     margin-top: 5px;
 }
 
-#xiangqiboard{
+#xiangqiboard {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.player-avatar.is-thinking::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 5px solid #0a0a0a00;
+    border-top-color: #00aeff;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

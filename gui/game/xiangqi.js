@@ -16,6 +16,9 @@ const CELL_HEIGHT = 46;
 const SELECT_COLOR = 'brown';
 var flip = 0;
 
+const personPlayerImage = document.getElementById('person-player-wrapper');
+const botPlayerImage = document.getElementById('bot-player-wrapper');
+
 function flipBoard() {
     flip ^= 1;
     drawBoard();
@@ -178,7 +181,11 @@ function dropPiece(event, square) {
     }
 
     event.preventDefault();
-    if (valid) setTimeout(function () { think(); }, 100);
+    if (valid){
+        personPlayerImage.classList.remove('is-thinking');
+        botPlayerImage.classList.add('is-thinking');
+        setTimeout(function () { think(); }, 100);
+    }
 }
 
 function tapPiece(square) {
@@ -187,16 +194,12 @@ function tapPiece(square) {
     const playerSide = engine.getSide(); // Lấy bên đang có lượt đi
 
     if (clickLock) {
-
-
         if (clickedPiece && engine.getPieceColor(clickedPiece) === playerSide) {
-
             if (clickSquare === userSource) {
                 clickLock = 0;
                 userSource = null;
                 drawBoard();
             } else {
-
                 userSource = clickSquare;
                 drawBoard();
                 highlightPiece(userSource);
@@ -212,6 +215,8 @@ function tapPiece(square) {
         if (valid) {
             playSound(valid);
             movePiece(userSource, userTarget);
+            personPlayerImage.classList.remove('is-thinking');
+            botPlayerImage.classList.add('is-thinking');
             setTimeout(think, 100);
         } else {
             drawBoard();
@@ -308,20 +313,18 @@ function think() {
     let targetSquare = engine.getTargetSquare(bestMove);
 
     setTimeout(function () {
-
         movePiece(sourceSquare, targetSquare);
-
         document.querySelectorAll('.selected-piece').forEach(img => {
             img.classList.remove('selected-piece');
         });
-
         const td = document.getElementById(targetSquare);
         if (td && td.firstChild && td.firstChild.tagName === 'IMG') {
             td.firstChild.classList.add('selected-piece');
         }
-
         playSound(bestMove);
         userTime = Date.now();
+        botPlayerImage.classList.remove('is-thinking');
+        personPlayerImage.classList.add('is-thinking');
     }, delayMove);
 }
 
@@ -381,6 +384,8 @@ function newGame() {
     allowBook = 1;
     engine.setBoard(engine.START_FEN);
     drawBoard();
+    personPlayerImage.classList.add('is-thinking');
+    botPlayerImage.classList.remove('is-thinking');
 }
 
 
