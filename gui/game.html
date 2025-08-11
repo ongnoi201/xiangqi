@@ -30,6 +30,7 @@
 
 <body>
     <div id="main">
+        <img src="#" alt="GameOver" id="gameover-img">
         <div id="bot-player">
             <img id="bot-player-image" src="game/images/bots/may1.jpg" alt="bot play">
             <span id="bot-player-name">Ông Nội</span>
@@ -47,7 +48,7 @@
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-bot-image" src="game/images/bots/may2.jpg" style="width: 25px;"></img>
+                    <image id="current-bot-image" src="game/images/bots/may1.jpg" style="width: 25px;"></img>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 420px;">
                     <li class="list-group-item-action mb-1">
@@ -174,37 +175,8 @@
         </div>
     </div>
 
-    <!-- PGN -->
-    <!-- <textarea id="pgn" rows="3" name="text" class="form-control" style="width: 420px;"
-            spellcheck="false"></textarea> -->
-
-    <!-- Xiangqi engine -->
     <script src="engine/wukong.js"></script>
-
-    <!-- Bots -->
     <script src="game/bots.js"></script>
-
-    <!-- User input handling -->
     <script src="game/xiangqi.js"></script>
-
-    <!-- DevTools detection -->
-    <script src="libs/js/isdevtoolopen.js"> </script>
-
-    <!-- Remove background image when DevTools are open -->
-    <script type="module">
-        // on update page when devtools are opened
-        if (window.devtools.isOpen == 1) {
-            document.body.style.backgroundImage = '';
-        }
-
-        // on devtools open/close
-        window.addEventListener('devtoolschange', event => {
-            if (window.devtools.isOpen == 0) {
-                document.body.style.backgroundImage = '';
-            } else if (window.devtools.isOpen == 1) {
-                document.body.style.backgroundImage = 'url(game/images/misc/background.png)';
-            }
-        });	    
-    </script>
 </body>
 <html>
