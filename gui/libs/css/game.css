@@ -26,6 +26,7 @@ body {
     width: 150px;
     height: 150px;
     display: none;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 
@@ -120,9 +121,4 @@ body {
     to {
         transform: rotate(360deg);
     }
-}
-
-.test{
-    background-color: #e7914a;
-    color: #d0ebda;
 }

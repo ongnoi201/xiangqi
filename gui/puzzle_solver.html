@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Cờ Thế - Giải cờ thế</title>
+
+    <!-- Encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.9, user-scalable=no">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="shortcut icon" href="game/images/misc/icon.png" type="image/png">
+    <link rel="manifest" href="../manifest.json">
+
+    <!-- SEO -->
+    <meta name="description" content="Didactic Chinese chess Xiangqi engine by Code Monkey King">
+    <meta name="keywords" content="play xiangqi online chinese chess engine javascript">
+
+    <!-- Bootstrap -->
+    <link href="https://db.onlinewebfonts.com/c/1ee9941f1b8c128110ca4307dda59917?family=STKaiti" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
+    <link rel="stylesheet" href="libs/css/puzzle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+
+</head>
+
+<body>
+    <div id="main">
+        <img src="#" alt="GameOver" id="gameover-img">
+        <div class="info">
+            <h1 class="text-center">Giải Cờ Thế</h1>
+            <p class="text-center text-secondary" id="level">Mate in 1 move</p>
+        </div>
+
+        <div id="xiangqiboard" style="border: 1px solid black;
+                  background: url(game/images/boards/board-ccbridge.png);
+                  background-size: contain;"></div>
+
+        <div class="btn-group mt-1 mb-1" style="width: 420px;" id="puzzle-group">
+            <style type="text/css">
+                .scrollable-menu {
+                    height: 420;
+                    max-height: 466px;
+                    overflow-x: hidden;
+                }
+            </style>
+
+            <div class="dropdown mr-1">
+                <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <span id="current-puzzle-name">Puzzle</span>
+                </button>
+                <div id="puzzles" class="scrollable-menu dropdown-menu" aria-labelledby="dropdownMenuButton"
+                    style="width: 420px;"></div>
+            </div>
+
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
+                onclick="replay();"><i class="bi bi-search"></i></button>
+
+            <div class="dropdown mr-1">
+                <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <image id="current-bot-image" src="game/images/bots/may4.jpg"
+                        style="width: 25px; height: 25px; object-fit: cover;"></img>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 290px !important;">
+                    <li class="list-group-item-action mb-1">
+                        <button class="btn col-9 text-left" onclick="setBot('Baba');">
+                            <img class="image-level" src="game/images/bots/may2.jpg"></img>
+                            BaBa (level 2)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1">
+                        <button class="btn col-9 text-left" onclick="setBot('Phuvuong');">
+                            <img class="image-level" src="game/images/bots/may3.jpg"></img>
+                            Phụ Vương (level 3)
+                        </button>
+                    </li>
+
+                    <li class="list-group-item-action mb-1">
+                        <button class="btn col-9 text-left" onclick="setBot('Laoba');">
+                            <img class="image-level" src="game/images/bots/may4.jpg"></img>
+                            Lão Ba (level 4)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action">
+                        <button class="btn text-left" onclick="setBot('Hoangde');">
+                            <img class="image-level" src="game/images/bots/may5.jpg"></img>
+                            Hoàng Đế (level 5)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action">
+                        <button class="btn text-left" onclick="setBot('Ongchu');">
+                            <img class="image-level" src="game/images/bots/may6.jpg"></img>
+                            Ông Chú (level 6)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action">
+                        <button class="btn text-left" onclick="setBot('Laogia');">
+                            <img class="image-level" src="game/images/bots/may7.jpg"></img>
+                            Lão Già (level 7)
+                        </button>
+                    </li>
+                </div>
+            </div>
+
+            <div class="dropdown ml-1">
+                <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <image id="current-promoted-image" src="game/images/more2_pieces/14.svg" style="width: 25px;">
+                        </img>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
+                    style="width: 202px;">
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('romanized_pieces');">
+                        <button class="btn">Phương tây
+                            <img src="game/images/romanized_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('traditional_pieces');">
+                        <button class="btn">Truyền thống
+                            <img src="game/images/traditional_pieces/7.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more1_pieces');">
+                        <button class="btn">Xanh ngọc
+                            <img src="game/images/more1_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more2_pieces');">
+                        <button class="btn">Khối gỗ
+                            <img src="game/images/more2_pieces/7.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1" onclick="setPieceTheme('more3_pieces');">
+                        <button class="btn">Khối nhựa
+                            <img src="game/images/more3_pieces/14.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                </div>
+            </div>
+
+            <div class="dropdown ml-1">
+                <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
+                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <image id="current-promoted-image" src="game/images/boards/board_dark.png"
+                        style="width: 25px; height: 25px;">
+                        </img>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
+                    style="width: 202px;">
+                    <li class="list-group-item-action mb-1"
+                        onclick="setBoardTheme('game/images/boards/board-ccbridge.png');">
+                        <button class="btn">CCBridge
+                            <img src="game/images/boards/board-ccbridge.png" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1"
+                        onclick="setBoardTheme('game/images/boards/board_light.svg');">
+                        <button class="btn">Light theme
+                            <img src="game/images/boards/board_light.svg" class="mr-2" style="width: 30px;"></img>
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1"
+                        onclick="setBoardTheme('game/images/boards/board_dark.png');">
+                        <button class="btn">Dark theme
+                            <img src="game/images/boards/board_dark.png" class="mr-2" style="width: 30px;" />
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1"
+                        onclick="setBoardTheme('game/images/boards/board_good.svg');">
+                        <button class="btn">Good theme
+                            <img src="game/images/boards/board_good.svg" class="mr-2" style="width: 30px;" />
+                        </button>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <script src="engine/wukong.js"></script>
+            <script src="game/puzzles.js"></script>
+            <script src="game/bots.js"></script>
+            <script src="game/utils.js"></script>
+            <script src="game/puzzle_solver.js"></script>
+</body>
+<html>

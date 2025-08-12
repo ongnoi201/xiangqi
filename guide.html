@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Luật Cờ Tướng — Tổng hợp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f6f3ee;
+            --panel: #fff;
+            --accent: #b35a2f;
+            --muted: #6b6b6b;
+            --board: #e8cda6;
+            --line: #6b4a2a;
+            --piece-red: #d33;
+            --piece-black: #222;
+            --card-shadow: 0 8px 30px rgba(27, 31, 40, 0.08);
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        body {
+            background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+            margin: 0;
+            padding: 32px;
+            color: #222;
+            font-family: 'Noto Serif', serif !important;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 22px
+        }
+
+        .logo {
+            width: 84px;
+            height: 84px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8e6d9, #fdeee6);
+            border: 1px solid #f0d8c6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow)
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            margin: 0;
+            color: var(--accent)
+        }
+
+        h1.title {
+            margin: 0;
+            font-size: 28px
+        }
+
+        p.lead {
+            margin: 6px 0 0;
+            color: var(--muted)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            align-items: start
+        }
+
+        .card {
+            background: var(--panel);
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: var(--card-shadow)
+        }
+
+        .section h2 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            color: var(--accent)
+        }
+
+        .section p {
+            margin: 0 0 10px;
+            color: #333
+        }
+
+        .rules-list {
+            display: grid;
+            gap: 10px
+        }
+
+        .rule {
+            background: linear-gradient(180deg, #fff, #fffefc);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #efe6dd
+        }
+
+        .rule h3 {
+            margin: 0 0 6px;
+            font-size: 15px
+        }
+
+        .rule p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        /* Board illustration */
+        .board-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start
+        }
+
+        .board {
+            width: 320px;
+        }
+
+        .board img {
+            width: 100%;
+            height: auto;
+            display: block
+        }
+
+        .legend {
+            flex: 1
+        }
+
+        .term {
+            background: linear-gradient(180deg, #fff, #fffefc);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #efe6dd
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 13px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        /* responsive */
+        @media (max-width:980px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .board {
+                width: 100%
+            }
+        }
+
+        /* small typography for long rules */
+        .compact {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2b2b2b
+        }
+
+        /* nice code-like block for advanced rules */
+        .advanced {
+            background: #fbf7f3;
+            border-left: 4px solid var(--accent);
+            padding: 12px;
+            border-radius: 8px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <center><h1 class="title">Luật Cờ Tướng (Xiangqi)</h1></center>
+                <p class="lead">Bao gồm: Luật cơ bản, Thuật ngữ, Luật cao cấp và Luật xử hòa — trình bày rõ rành mạch,
+                    kèm minh họa board.</p>
+            </div>
+        </header>
+
+        <div class="grid">
+            <main>
+                <div class="card section compact">
+                    <h2>Luật cơ bản — Di chuyển các quân cờ</h2>
+                    <div class="rules-list">
+                        <div class="rule">
+                            <h3>1. Tướng</h3>
+                            <p>Di chuyển một ô theo ngang hoặc dọc, luôn trong phạm vi &quot;cung&quot; (palace).</p>
+                        </div>
+                        <div class="rule">
+                            <h3>2. Sĩ</h3>
+                            <p>Di chuyển chéo mỗi lần một ô, luôn trong &quot;cung&quot;, không ra ngoài.</p>
+                        </div>
+                        <div class="rule">
+                            <h3>3. Tượng</h3>
+                            <p>Di chuyển chéo 2 ô. Không được qua sông (không sang nửa bàn đối phương). Nước đi không
+                                hợp lệ nếu có quân chắn giữa đường.</p>
+                        </div>
+                        <div class="rule">
+                            <h3>4. Xe</h3>
+                            <p>Di chuyển ngang hoặc dọc suốt bàn miễn không có quân khác chắn đường.</p>
+                        </div>
+                        <div class="rule">
+                            <h3>5. Mã</h3>
+                            <p>Di chuyển theo chữ L: 2 ô ngang + 1 ô dọc hoặc 2 ô dọc + 1 ô ngang. Nếu có quân chắn tại
+                                ô kề bên theo chiều 2 ô thì mã không thể đi (nút mã).</p>
+                        </div>
+                        <div class="rule">
+                            <h3>6. Pháo</h3>
+                            <p>Di chuyển giống Xe khi không ăn. Khi ăn phải có đúng 1 quân chắn (người nhảy) giữa pháo
+                                và quân bị ăn.</p>
+                        </div>
+                        <div class="rule">
+                            <h3>7. Tốt</h3>
+                            <p>Đi 1 ô mỗi nước. Chưa qua sông chỉ đi thẳng tiến; sau khi qua sông có thể đi ngang hoặc
+                                tiến 1 ô.</p>
+                        </div>
+                        <div class="rule">
+                            <h3>8. Ăn quân</h3>
+                            <p>Khi di chuyển đến vị trí đang có quân đối phương thì quân đó bị ăn và lấy ra khỏi bàn.
+                            </p>
+                        </div>
+                        <div class="rule">
+                            <h3>9. Chống tướng</h3>
+                            <p>Hai tướng không được nằm trên cùng một cột dọc mà không có quân cản giữa hai tướng. Nước
+                                đi đưa hai tướng vào thế &quot;chống tướng&quot; là không hợp lệ.</p>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top:18px">Kết thúc trận đấu</h2>
+                    <ul class="compact">
+                        <li><strong>Chiếu bí:</strong> Bên chiếu khi đối phương không còn nước hợp lệ để tránh chiếu —
+                            bên chiếu thắng.</li>
+                        <li><strong>Hết nước đi:</strong> Đến lượt mà không có nước hợp lệ -> thua.</li>
+                        <li><strong>Vi phạm luật cao cấp:</strong> Một hoặc hai bên vi phạm các quy cấm cao cấp sẽ bị xử
+                            thua hoặc hòa theo điều khoản.</li>
+                    </ul>
+                </div>
+
+                <div class="card section compact" style="margin-top:16px">
+                    <h2>Thuật ngữ chuyên dùng</h2>
+                    <div class="term">
+                        <h3>Chiếu Tướng</h3>
+                        <p>Bất kỳ nước đi nào khiến Tướng đối phương có thể bị ăn ở nước tiếp theo.</p>
+                    </div>
+                    <div class="term">
+                        <h3>Thí Quân</h3>
+                        <p>Đưa quân đến vị trí có thể bị ăn (có lợi thế chiến thuật), chấp nhận mất quân để đạt mục tiêu
+                            cao hơn.</p>
+                    </div>
+                    <div class="term">
+                        <h3>Đuổi Quân</h3>
+                        <p>Di chuyển làm cho quân đối phương phải rời vị trí hoặc bị bắt trong nước tiếp theo; có một số
+                            ngoại lệ nêu trong luật (Tướng/Tốt, nước thí, v.v.).</p>
+                    </div>
+                    <div class="term">
+                        <h3>Quân được bảo vệ</h3>
+                        <p>Quân bị đuổi mà nếu đối phương ăn sẽ bị ăn lại ngay ở nước tiếp. (Lưu ý: Xe không được coi là
+                            &quot;được bảo vệ&quot; khi bị đuổi bởi Pháo hoặc Mã).</p>
+                    </div>
+                </div>
+
+                <div class="card section compact advanced" style="margin-top:16px">
+                    <h2>Luật cao cấp (giới hạn hành vi)</h2>
+                    <p>Mọi nước hợp lệ theo luật cơ bản đều được phép trừ khi rơi vào các trường hợp sau:</p>
+                    <ol>
+                        <li><strong>Chiếu dai:</strong> Chiếu liên tục đối phương bằng 1 hoặc nhiều quân là không hợp lệ
+                            (bị hạn chế thời gian/đếm nước).</li>
+                        <li><strong>Đuổi dai:</strong> Liên tục đuổi một quân đối phương bằng 1 hoặc nhiều quân là không
+                            hợp lệ.</li>
+                    </ol>
+                    <p>Nội dung xử lý:</p>
+                    <ul>
+                        <li>Vi phạm đơn phương -> bên vi phạm thua.</li>
+                        <li>Cả hai cùng vi phạm -> hòa.</li>
+                        <li>Nếu bên A vi phạm chiếu dai và bên B vi phạm đuổi dai cùng lúc, bên chiếu dai bị xử thua.
+                        </li>
+                    </ul>
+
+                    <p>Quy tắc giới hạn: Cho phép tối đa 6 nước liên tục với 1 quân, 12 nước với 2 quân và 18 nước với 3
+                        quân. Vượt giới hạn sẽ áp dụng luật cao cấp.</p>
+                </div>
+
+                <div class="card section compact" style="margin-top:16px">
+                    <h2>Luật xử hòa (tránh ván kéo dài)</h2>
+                    <p>Khi cả hai bên không có khả năng thắng, cần xử hòa. Có 3 tiêu chí chính:</p>
+                    <li><strong>Effective Rule (Luật nước đi có hiệu lực):</strong> Tổng số nước &quot;hợp lệ&quot;
+                        đạt 120 (không tính nước đuổi/chiếu và các nước đối phó với chúng).</li>
+                </div>
+
+            </main>
+
+            <aside>
+                <div class="card board-wrap">
+                    <div class="board">
+                        <img style="width: 100%; object-fit: cover; box-sizing: border-box;"
+                            src="gui/game/images/misc/bancofull.png" alt="bancofull">
+                    </div>
+
+                    <div class="legend">
+                        <h3 style="margin-top:2px">Ghi chú nhanh</h3>
+                        <div class="term"><strong>Palace (Cung):</strong> 3x3 ở hai đầu, nơi Tướng, Sĩ được giới hạn.
+                        </div>
+                        <div class="term"><strong>Sông:</strong> Dải ở giữa (giữa hàng 5 và 6). Tượng không qua sông;
+                            Tốt mạnh hơn khi qua sông.</div>
+                        <div class="term"><strong>Chặn mã / chặn tượng:</strong> Một số quân bị &quot;chặn&quot; đường
+                            lệch bởi quân đứng ở ô trung gian.</div>
+                        <div class="term"><strong>Pháo ăn:</strong> Phải có đúng 1 quân làm &quot;người nhảy&quot; giữa
+                            pháo và quân đích.</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:14px">
+                    <h3 style="margin:0 0 8px">Quick Reference</h3>
+                    <ul style="margin:0; padding-left:18px; color:var(--muted)">
+                        <li>Effective / Progress / Moves Rule để xử hòa (120).</li>
+                        <li>Chống tướng: không cho phép tướng đối diện không có chắn.</li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</body>
+
+</html>
