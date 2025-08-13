@@ -295,31 +295,36 @@ function animateAndMovePiece(source, target, move, onComplete) {
     const pieceToAnimate = sourceTD.firstChild;
     const sourceRect = sourceTD.getBoundingClientRect();
     const targetRect = targetTD.getBoundingClientRect();
-    
+
+    const deltaX = targetRect.left - sourceRect.left;
+    const deltaY = targetRect.top - sourceRect.top;
+
     const animatedPiece = pieceToAnimate.cloneNode(true);
     animatedPiece.style.position = 'absolute';
     animatedPiece.style.left = `${sourceRect.left}px`;
     animatedPiece.style.top = `${sourceRect.top}px`;
     animatedPiece.style.zIndex = '1000';
-    animatedPiece.style.transition = 'left 0.3s ease-in-out, top 0.3s ease-in-out';
+    
+    animatedPiece.style.transition = 'transform 0.3s ease-in-out';
     
     document.body.appendChild(animatedPiece);
     pieceToAnimate.style.visibility = 'hidden';
 
-    requestAnimationFrame(() => {
-        animatedPiece.style.left = `${targetRect.left}px`;
-        animatedPiece.style.top = `${targetRect.top}px`;
-    });
-
-    setTimeout(() => {
-        document.body.removeChild(animatedPiece);
+    animatedPiece.addEventListener('transitionend', () => {
+        if (document.body.contains(animatedPiece)) {
+            document.body.removeChild(animatedPiece);
+        }
         movePiece(source, target);  
         playSound(move);
         updateCapturedPieces();
         if (onComplete) {
             onComplete();
         }
-    }, 300); 
+    }, { once: true }); 
+
+    requestAnimationFrame(() => {
+        animatedPiece.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+    });
 }
 
 function validateMove(userSource, userTarget) {
