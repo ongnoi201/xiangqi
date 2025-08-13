@@ -62,9 +62,9 @@ function updateCapturedPieces() {
 }
 
 function showLargeImage(event) {
-  const clickedImage = event.target;
-  modalImageContent.src = clickedImage.src;
-  imageModalOverlay.style.display = 'flex';
+    const clickedImage = event.target;
+    modalImageContent.src = clickedImage.src;
+    imageModalOverlay.style.display = 'flex';
 }
 
 function hideLargeImage() {
@@ -171,27 +171,27 @@ function highlightKingInCheck() {
 }
 
 function flipBoard() {
-  flip ^= 1;
-  drawBoard();
+    flip ^= 1;
+    drawBoard();
 }
 
 function setBoardTheme(theme) {
-    saveGameState({board: theme});
+    saveGameState({ board: theme });
     document.getElementById("current-board-image").src = theme;
     document.getElementById('xiangqiboard').style.backgroundImage = 'url(' + theme + ')';
     drawBoard();
 }
 
 function setPieceTheme(theme) {
-    saveGameState({piece: theme});
-    document.getElementById("current-piece-image").src = 'game/images/'+theme+'/7.svg';
+    saveGameState({ piece: theme });
+    document.getElementById("current-piece-image").src = 'game/images/' + theme + '/7.svg';
     pieceFolder = theme;
     drawBoard();
 }
 
 function playSound(move) {
     const sound = loadGameState().sound;
-    if(!sound) return;
+    if (!sound) return;
     if (engine.getCaptureFlag(move)) CAPTURE_SOUND.play();
     else MOVE_SOUND.play();
 }
@@ -255,10 +255,19 @@ function getBookMove() {
 
 function movePiece(userSource, userTarget) {
     lastMoveSource = parseInt(userSource);
-
+    lastMoveTarget = parseInt(userTarget);
     let moveString = engine.squareToString(userSource) + engine.squareToString(userTarget);
     engine.loadMoves(moveString);
     drawBoard();
+
+    if (lastMoveTarget !== null) {
+        const targetCell = document.getElementById(lastMoveTarget);
+        if (targetCell && targetCell.firstChild && targetCell.firstChild.tagName === 'IMG') {
+            const pieceImage = targetCell.firstChild;
+            pieceImage.style.boxShadow = '0 0 5px 1px #1ec51eff'; // Viền mờ màu tím
+            pieceImage.style.borderRadius = '50%'; // Bo tròn viền
+        }
+    }
 
     if (isGameOver()) {
         if (gameResult.includes('win.png')) {
@@ -296,35 +305,30 @@ function animateAndMovePiece(source, target, move, onComplete) {
     const sourceRect = sourceTD.getBoundingClientRect();
     const targetRect = targetTD.getBoundingClientRect();
 
-    const deltaX = targetRect.left - sourceRect.left;
-    const deltaY = targetRect.top - sourceRect.top;
-
     const animatedPiece = pieceToAnimate.cloneNode(true);
     animatedPiece.style.position = 'absolute';
     animatedPiece.style.left = `${sourceRect.left}px`;
     animatedPiece.style.top = `${sourceRect.top}px`;
     animatedPiece.style.zIndex = '1000';
-    
-    animatedPiece.style.transition = 'transform 0.3s ease-in-out';
-    
+    animatedPiece.style.transition = 'left 0.3s ease-in-out, top 0.3s ease-in-out';
+
     document.body.appendChild(animatedPiece);
     pieceToAnimate.style.visibility = 'hidden';
 
-    animatedPiece.addEventListener('transitionend', () => {
-        if (document.body.contains(animatedPiece)) {
-            document.body.removeChild(animatedPiece);
-        }
-        movePiece(source, target);  
+    requestAnimationFrame(() => {
+        animatedPiece.style.left = `${targetRect.left}px`;
+        animatedPiece.style.top = `${targetRect.top}px`;
+    });
+
+    setTimeout(() => {
+        document.body.removeChild(animatedPiece);
+        movePiece(source, target);
         playSound(move);
         updateCapturedPieces();
         if (onComplete) {
             onComplete();
         }
-    }, { once: true }); 
-
-    requestAnimationFrame(() => {
-        animatedPiece.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-    });
+    }, 300);
 }
 
 function validateMove(userSource, userTarget) {

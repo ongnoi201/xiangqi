@@ -44,6 +44,7 @@ var clickLock = 0;
 var allowBook = 1;
 var userSource, userTarget;
 var lastMoveSource = null;
+var lastMoveTarget = null;
 var nonCaptureMoveCounter = 0;
 
 function dropPiece(event, square) {
@@ -186,6 +187,7 @@ function think() {
 function undo() {
     gameResult = '*';
     lastMoveSource = null;
+    lastMoveTarget = null;
     const isEditMode = document.getElementById('editMode').checked;
     try {
         if (isEditMode) {
@@ -210,6 +212,7 @@ function newGame() {
     userTime = 0;
     allowBook = 1;
     lastMoveSource = null;
+    lastMoveTarget = null;
     nonCaptureMoveCounter = 0;
     const tableChess = data && data.board ? data.board : 'game/images/boards/board-ccbridge.png';
     document.getElementById("xiangqiboard").style.backgroundImage = "url("+tableChess+")";
