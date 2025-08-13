@@ -15,12 +15,25 @@ body {
 }
 
 .cotuong-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     gap: 20px;
+}
+
+.setting-btn{
+    border: 0;
+    background: transparent;
+    font-size: 40px;
+    position: absolute;
+    top: 5px;
+    right: -15px;
+    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.7));
+    z-index: 10;
+    outline: none;
 }
 
 .cotuong-logo {
@@ -69,4 +82,17 @@ body {
     border-radius: 12px;
     border: 4px solid #d48b4280;
     pointer-events: none;
+}
+
+#modelSetting{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #eba055;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.7));
+    display: none;
+    z-index: 20;
 }

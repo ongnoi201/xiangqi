@@ -10,6 +10,7 @@ const CHECK_SOUND = new Audio('game/sounds/check.mp3');
 const WIN_SOUND = new Audio('game/sounds/win.mp3');
 const LOSE_SOUND = new Audio('game/sounds/lose.mp3');
 const DRAW_SOUND = new Audio('game/sounds/draw.mp3');
+const MUSIC = new Audio('game/sounds/music.m4a');
 
 const CELL_WIDTH = 46;
 const CELL_HEIGHT = 46;
@@ -220,5 +221,8 @@ function newGame() {
 }
 
 newGame();
-
+if (data && data.music) {
+    MUSIC.play();
+    MUSIC.loop = true;
+}
 setBot(data && data.botLevel ? data.botLevel : 'Ongnoi');

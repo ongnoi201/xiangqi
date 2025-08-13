@@ -1,9 +1,10 @@
+const data = loadGameState();
 var engine = new Engine();
 var book = [];
 var botName = '';
 var playerSide = 0;
 var currentPuzzleId = '';
-var pieceFolder = 'traditional_pieces';
+var pieceFolder = data && data.piece ? data.piece : 'traditional_pieces';
 
 const MOVE_SOUND = new Audio('game/sounds/move.wav');
 const CAPTURE_SOUND = new Audio('game/sounds/capture.wav');
@@ -11,6 +12,7 @@ const CHECK_SOUND = new Audio('game/sounds/check.mp3');
 const WIN_SOUND = new Audio('game/sounds/win.mp3');
 const LOSE_SOUND = new Audio('game/sounds/lose.mp3');
 const DRAW_SOUND = new Audio('game/sounds/draw.mp3');
+const MUSIC = new Audio('game/sounds/music.m4a');
 
 const CELL_WIDTH = 46;
 const CELL_HEIGHT = 46;
@@ -196,6 +198,7 @@ function replay() {
 
 function setBot(bot) {
     botName = bot;
+    saveGameState({botLevel: bot});
     document.getElementById('current-bot-image').src = bots[bot].image;
     fixedTime = bots[bot].time;
     fixedDepth = bots[bot].depth;
@@ -221,6 +224,11 @@ function setPuzzle(puzzleId) {
         puzzle = Puzzles[currentPuzzleId];
         engine.setBoard(puzzle.fen);
     }
+
+    const tableChess = data && data.board ? data.board : 'game/images/boards/board-ccbridge.png';
+    document.getElementById("xiangqiboard").style.backgroundImage = "url("+tableChess+")";
+    document.getElementById("current-board-image").src = tableChess;
+    document.getElementById("current-piece-image").src = 'game/images/'+pieceFolder+'/7.svg';
 
     playerSide = engine.getSide();
     guiSide = playerSide;
@@ -265,7 +273,11 @@ function findNextUnsolvedPuzzle() {
     updatePuzzleListUI();
 }());
 
-setBot('Laoba');
+if (data && data.music) {
+    MUSIC.play();
+    MUSIC.loop = true;
+}
+setBot(data && data.botLevel ? data.botLevel : 'Phuvuong');
 const nextPuzzleIndex = findNextUnsolvedPuzzle();
 setPuzzle('puzzle_' + nextPuzzleIndex);
 

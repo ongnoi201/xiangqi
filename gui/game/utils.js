@@ -117,6 +117,8 @@ function setPieceTheme(theme) {
 }
 
 function playSound(move) {
+    const sound = loadGameState().sound;
+    if(!sound) return;
     if (engine.getCaptureFlag(move)) CAPTURE_SOUND.play();
     else MOVE_SOUND.play();
 }

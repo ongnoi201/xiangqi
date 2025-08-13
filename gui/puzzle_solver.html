@@ -63,62 +63,83 @@
                     style="width: 420px;"></div>
             </div>
 
-            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
-                onclick="replay();"><i class="bi bi-search"></i></button>
-
             <div class="dropdown mr-1">
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-bot-image" src="game/images/bots/may4.jpg"
-                        style="width: 25px; height: 25px; object-fit: cover;"></img>
+                    <image id="current-bot-image" src="game/images/bots/may1.jpg" style="width: 25px; height: 25px; object-fit: cover;"></img>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 290px !important;">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 300px;">
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('Baba');">
-                            <img class="image-level" src="game/images/bots/may2.jpg"></img>
-                            BaBa (level 2)
+                        <button class="btn col-9 text-left" onclick="setBot('Ongnoi');">
+                            <img class="image-level" src="game/images/bots/may1.jpg"></img>
+                            Ông Nội (level 1)
                         </button>
                     </li>
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('Phuvuong');">
+                        <button class="btn col-9 text-left" onclick="setBot('Laoho');">
+                            <img class="image-level" src="game/images/bots/may2.jpg"></img>
+                            Lão Hổ (level 2)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action mb-1">
+                        <button class="btn col-9 text-left" onclick="setBot('Baba');">
                             <img class="image-level" src="game/images/bots/may3.jpg"></img>
-                            Phụ Vương (level 3)
+                            Ba Ba (level 3)
                         </button>
                     </li>
 
                     <li class="list-group-item-action mb-1">
-                        <button class="btn col-9 text-left" onclick="setBot('Laoba');">
+                        <button class="btn col-9 text-left" onclick="setBot('Daivuong');">
                             <img class="image-level" src="game/images/bots/may4.jpg"></img>
-                            Lão Ba (level 4)
+                            Đại Vương (level 4)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action">
+                        <button class="btn text-left" onclick="setBot('Phuvuong');">
+                            <img class="image-level" src="game/images/bots/may5.jpg"></img>
+                            Phụ Vương (level 5)
+                        </button>
+                    </li>
+                    <li class="list-group-item-action">
+                        <button class="btn text-left" onclick="setBot('Laoba');">
+                            <img class="image-level" src="game/images/bots/may6.jpg"></img>
+                            Lão Ba (level 6)
                         </button>
                     </li>
                     <li class="list-group-item-action">
                         <button class="btn text-left" onclick="setBot('Hoangde');">
-                            <img class="image-level" src="game/images/bots/may5.jpg"></img>
-                            Hoàng Đế (level 5)
+                            <img class="image-level" src="game/images/bots/may7.jpg"></img>
+                            Hoàng Đế (level 7)
                         </button>
                     </li>
                     <li class="list-group-item-action">
                         <button class="btn text-left" onclick="setBot('Ongchu');">
-                            <img class="image-level" src="game/images/bots/may6.jpg"></img>
-                            Ông Chú (level 6)
+                            <img class="image-level" src="game/images/bots/may8.jpg"></img>
+                            Ông Chú (level 8)
                         </button>
                     </li>
                     <li class="list-group-item-action">
                         <button class="btn text-left" onclick="setBot('Laogia');">
-                            <img class="image-level" src="game/images/bots/may7.jpg"></img>
-                            Lão Già (level 7)
+                            <img class="image-level" src="game/images/bots/may9.jpg"></img>
+                            Lão Già (level 9)
                         </button>
                     </li>
                 </div>
+
             </div>
 
-            <div class="dropdown ml-1">
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
+                onclick="replay();"><i class="bi bi-search"></i></button>
+                
+            <button class="btn btn-controls btn-outline-secondary text-dark bg-light font-weight-bold mr-1"
+                onclick="undo();"><i class="bi bi-arrow-counterclockwise"></i></button>
+
+            <div class="dropdown">
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-promoted-image" src="game/images/more2_pieces/14.svg" style="width: 25px;">
+                    <image id="current-piece-image" src="game/images/more2_pieces/14.svg" style="width: 25px;">
                         </img>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
@@ -155,7 +176,7 @@
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-promoted-image" src="game/images/boards/board_dark.png"
+                    <image id="current-board-image" src="game/images/boards/board_dark.png"
                         style="width: 25px; height: 25px;">
                         </img>
                 </button>

@@ -19,6 +19,8 @@
     <!-- Bootstrap -->
     <link href="https://db.onlinewebfonts.com/c/1ee9941f1b8c128110ca4307dda59917?family=STKaiti" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="gui/libs/css/index.css">
@@ -30,6 +32,7 @@
 
 <body>
     <div class="cotuong-container">
+        <button class="setting-btn" onclick="openModel()"><i class="bi bi-gear"></i></button>
         <img class="cotuong-logo" src="gui/game/images/misc/cotuongLogo.png" alt="cotuongLogo">
         <div class="btn-games">
             <button class="btn-game" onclick="window.location.href='gui/game.html'">Cờ tướng</button>
@@ -37,6 +40,71 @@
             <button class="btn-game" onclick="window.location.href='guide.html'">Luật chơi</button>
             <button class="btn-game" onclick="window.location.href='information.html'">Thông tin</button>
         </div>
+
+        <div id="modelSetting">
+            <div class="setting-group">
+                <input type="checkbox" id="sound" onchange="changeSound()">
+                <span>Âm thanh game</span>
+            </div>
+            <div class="setting-group">
+                <input type="checkbox" id="music" onchange="changeMusic()">
+                <span>Nhạc nền</span>
+            </div>
+        </div>
     </div>
+    <script src="gui/game/utils.js"></script>
+    <script>
+        const sound = document.getElementById("sound");
+        const music = document.getElementById("music");
+        const model = document.getElementById("modelSetting");
+        const msbg = new Audio('gui/game/sounds/music.m4a');
+        let isOpen = 0;
+        function changeSound() {
+            if (sound.checked) {
+                saveGameState({ sound: true });
+            } else {
+                saveGameState({ sound: false });
+            }
+        }
+
+        function changeMusic() {
+            if (music.checked) {
+                saveGameState({ music: true });
+                msbg.play();
+                msbg.loop = true;
+            } else {
+                saveGameState({ music: false });
+                msbg.pause();
+            }
+        }
+
+        function openModel() {
+            if (isOpen == 0) {
+                model.style.display = 'block';
+                isOpen = 1;
+            } else {
+                model.style.display = 'none';
+                isOpen = 0;
+            }
+        }
+
+        window.onload = function () {
+            const data = loadGameState();
+            if (data && data.music) {
+                msbg.play();
+                msbg.loop = true;
+                music.checked = true;
+            } else {
+                msbg.pause();
+                music.checked = false
+            }
+
+            if (data && data.sound) {
+                sound.checked = true;
+            } else {
+                sound.checked = false;
+            }
+        };
+    </script>
 </body>
 <html>
