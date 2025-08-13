@@ -195,6 +195,7 @@ function undo() {
             engine.takeBack();
         }
         drawBoard();
+        updateCapturedPieces();
     } catch (e) {
 
     }
@@ -216,6 +217,7 @@ function newGame() {
     document.getElementById("current-piece-image").src = 'game/images/'+pieceFolder+'/7.svg';
     engine.setBoard(engine.START_FEN);
     drawBoard();
+    updateCapturedPieces();
     personPlayerImage.classList.add('is-thinking');
     botPlayerImage.classList.remove('is-thinking');
 }
@@ -226,3 +228,11 @@ if (data && data.music) {
     MUSIC.loop = true;
 }
 setBot(data && data.botLevel ? data.botLevel : 'Ongnoi');
+const botImage = document.getElementById('bot-player-image');
+const personImage = document.getElementById('person-player-image');
+const imageModalOverlay = document.getElementById('image-modal-overlay');
+const modalImageContent = document.getElementById('modal-image-content');
+
+botImage.addEventListener('click', showLargeImage);
+personImage.addEventListener('click', showLargeImage);
+imageModalOverlay.addEventListener('click', hideLargeImage);

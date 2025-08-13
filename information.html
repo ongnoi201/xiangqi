@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
     <title>Thông tin</title>
 </head>
@@ -24,26 +25,48 @@
         align-items: center;
     }
 
-    .grid-image{
+    .grid-image {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
         margin-top: 10px;
     }
 
-    .grid-image img{
+    .grid-image img {
         width: 110px;
         height: 110px;
         border-radius: 5px;
         object-fit: cover;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+
+    #image-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        cursor: pointer;
+    }
+
+    #modal-image-content {
+        max-width: 80vw;
+        max-height: 80vh;
+        border: 1px solid white;
+        border-radius: 10px;
+        object-fit: cover;
+    }
 </style>
 
 <body>
     <center>
         <div style="line-height: 30px; font-size: 20px;">
-            <img style="width: 250px; 
+            <img id="avatar" style="width: 250px; 
                     height: 250px; 
                     object-fit: cover; 
                     border-radius: 50%; 
@@ -52,22 +75,40 @@
             <br>
             <h2>CỜ TƯỚNG</h2>
             <strong>Phiên bản: </strong> 1.0 <br>
-            <strong>Github: </strong><span><a style="text-decoration: none;" href="https://github.com/ongnoi201">ongnoi201</a></span><br>
+            <strong>Github: </strong><span><a style="text-decoration: none;"
+                    href="https://github.com/ongnoi201">ongnoi201</a></span><br>
             <strong>Gmail: </strong><span>laogia.jp60@gmail.com</span>
         </div>
 
         <div class="grid-image">
-            <img src="gui/game/images/bots/may1.jpg" alt="may1">
-            <img src="gui/game/images/bots/may2.jpg" alt="may2">
-            <img src="gui/game/images/bots/may3.jpg" alt="may3">
-            <img src="gui/game/images/bots/may4.jpg" alt="may4">
-            <img src="gui/game/images/bots/may5.jpg" alt="may5">
-            <img src="gui/game/images/bots/may6.jpg" alt="may6">
-            <img src="gui/game/images/bots/may7.jpg" alt="may7">
-            <img src="gui/game/images/bots/may8.jpg" alt="may8">
-            <img src="gui/game/images/bots/may9.jpg" alt="may9">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may1.jpg" alt="may1">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may2.jpg" alt="may2">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may3.jpg" alt="may3">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may4.jpg" alt="may4">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may5.jpg" alt="may5">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may6.jpg" alt="may6">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may7.jpg" alt="may7">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may8.jpg" alt="may8">
+            <img class="imge-list animate__animated animate__zoomIn" src="gui/game/images/bots/may9.jpg" alt="may9">
+        </div>
+        <div id="image-modal-overlay">
+            <img class="animate__animated animate__zoomIn" id="modal-image-content" src="" alt="Phóng to ảnh đại diện">
         </div>
     </center>
+
+    <script src="gui/game/utils.js"></script>
+    <script>
+        const avatar = document.getElementById('avatar');
+        const allGridImages = document.querySelectorAll('.imge-list');
+        const imageModalOverlay = document.getElementById('image-modal-overlay');
+        const modalImageContent = document.getElementById('modal-image-content');
+
+        avatar.addEventListener('click', showLargeImage);
+        allGridImages.forEach(image => {
+            image.addEventListener('click', showLargeImage);
+        });
+        imageModalOverlay.addEventListener('click', hideLargeImage);
+    </script>
 </body>
 
 </html>

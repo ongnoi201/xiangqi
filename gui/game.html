@@ -17,6 +17,7 @@
     <link rel="manifest" href="../manifest.json">
 
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://db.onlinewebfonts.com/c/1ee9941f1b8c128110ca4307dda59917?family=STKaiti" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
@@ -32,11 +33,19 @@
 <body>
     <div id="main">
         <img src="#" alt="GameOver" id="gameover-img">
-        <div id="bot-player">
-            <div class="player-avatar" id="bot-player-wrapper">
-                <img id="bot-player-image" src="game/images/bots/may1.jpg" alt="bot play">
+        <div id="image-modal-overlay">
+            <img class="animate__animated animate__zoomIn" id="modal-image-content" src="" alt="Phóng to ảnh đại diện">
+        </div>
+        <div id="bot-more">
+            <div id="bot-player">
+                <div class="player-avatar" id="bot-player-wrapper">
+                    <img id="bot-player-image" src="game/images/bots/may1.jpg" alt="bot play">
+                </div>
+                <span id="bot-player-name">Ông Nội</span>
             </div>
-            <span id="bot-player-name">Ông Nội</span>
+            <div id="pieces-eat-person">
+
+            </div>
         </div>
 
         <!-- Chess board view -->
@@ -51,7 +60,7 @@
                     aria-expanded="false">
                     <image id="current-bot-image" src="game/images/bots/may1.jpg" style="width: 25px;"></img>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 420px;">
+                <div class="dropdown-menu animate__animated animate__fadeIn" aria-labelledby="dropdownMenuButton" style="width: 420px;">
                     <li class="list-group-item-action mb-1">
                         <button class="btn col-9 text-left" onclick="setBot('Ongnoi');">
                             <img class="image-level" src="game/images/bots/may1.jpg"></img>
@@ -126,7 +135,7 @@
                     <image id="current-piece-image" src="#" style="width: 25px;">
                         </img>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
+                <div class="dropdown-menu dropdown-menu-right text-right animate__animated animate__fadeIn" aria-labelledby="dropdownMenuButton"
                     style="width: 202px;">
                     <li class="list-group-item-action mb-1" onclick="setPieceTheme('romanized_pieces');">
                         <button class="btn">Phương tây
@@ -161,11 +170,10 @@
                 <button class="btn btn-outline-secondary text-dark bg-light font-weight-bold dropdown-toggle"
                     type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <image id="current-board-image" src="#"
-                        style="width: 25px; height: 25px;">
+                    <image id="current-board-image" src="#" style="width: 25px; height: 25px;">
                         </img>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton"
+                <div class="dropdown-menu dropdown-menu-right text-right animate__animated animate__fadeIn" aria-labelledby="dropdownMenuButton"
                     style="width: 202px;">
                     <li class="list-group-item-action mb-1"
                         onclick="setBoardTheme('game/images/boards/board-ccbridge.png');">
@@ -211,11 +219,16 @@
             </div>
         </div>
 
-        <div id="person-player">
-            <div class="player-avatar" id="person-player-wrapper">
-                <img id="person-player-image" src="game/images/bots/may1.jpg" alt="person play">
+        <div id="person-more">
+            <div id="pieces-eat-bot">
+
             </div>
-            <span>Hoàng Duy</span>
+            <div id="person-player">
+                <div class="player-avatar" id="person-player-wrapper">
+                    <img id="person-player-image" src="game/images/bots/may1.jpg" alt="person play">
+                </div>
+                <span>Hoàng Duy</span>
+            </div>
         </div>
     </div>
 

@@ -1,3 +1,76 @@
+const INITIAL_PIECE_COUNTS = {
+    // Quân Đỏ (Người chơi)
+    1: 5, // Tốt
+    2: 2, // Sĩ
+    3: 2, // Tượng
+    4: 2, // Mã
+    5: 2, // Pháo
+    6: 2, // Xe
+    7: 1, // Tướng
+    // Quân Đen (Máy)
+    8: 5,  // Tốt
+    9: 2,  // Sĩ
+    10: 2, // Tượng
+    11: 2, // Mã
+    12: 2, // Pháo
+    13: 2, // Xe
+    14: 1  // Tướng
+};
+
+
+function updateCapturedPieces() {
+    const capturedByPersonContainer = document.getElementById('pieces-eat-bot');
+    const capturedByBotContainer = document.getElementById('pieces-eat-person');
+
+    // Xóa hiển thị cũ
+    capturedByPersonContainer.innerHTML = '';
+    capturedByBotContainer.innerHTML = '';
+
+    // Đếm các quân cờ hiện có trên bàn
+    const onBoardCounts = {};
+    for (let i = 0; i < 256; i++) {
+        const piece = engine.getPiece(i);
+        if (piece) {
+            onBoardCounts[piece] = (onBoardCounts[piece] || 0) + 1;
+        }
+    }
+
+    let capturedByPersonHtml = ''; // Quân của máy bị người chơi bắt
+    let capturedByBotHtml = '';    // Quân của người chơi bị máy bắt
+
+    // So sánh số lượng trên bàn cờ với số lượng ban đầu
+    for (const pieceId in INITIAL_PIECE_COUNTS) {
+        const initialCount = INITIAL_PIECE_COUNTS[pieceId];
+        const currentCount = onBoardCounts[pieceId] || 0;
+        const capturedCount = initialCount - currentCount;
+
+        if (capturedCount > 0) {
+            const imgTag = `<img src="game/images/${pieceFolder}/${pieceId}.svg" class="eaten-piece">`;
+            for (let j = 0; j < capturedCount; j++) {
+                if (parseInt(pieceId, 10) >= 8) {
+                    capturedByPersonHtml += imgTag;
+                } else {
+                    capturedByBotHtml += imgTag;
+                }
+            }
+        }
+    }
+
+    // Cập nhật HTML
+    capturedByPersonContainer.innerHTML = capturedByPersonHtml;
+    capturedByBotContainer.innerHTML = capturedByBotHtml;
+}
+
+function showLargeImage(event) {
+  const clickedImage = event.target;
+  modalImageContent.src = clickedImage.src;
+  imageModalOverlay.style.display = 'flex';
+}
+
+function hideLargeImage() {
+    imageModalOverlay.style.display = 'none';
+}
+
 //Lưu trữ và lấy trạng thái cờ tướng trong localStorage
 function saveGameState(newData) {
     const oldState = loadGameState() || {};
@@ -214,6 +287,7 @@ function animateAndMovePiece(source, target, move, onComplete) {
     if (!sourceTD || !targetTD || !sourceTD.firstChild) {
         movePiece(source, target);
         playSound(move);
+        updateCapturedPieces();
         if (onComplete) onComplete();
         return;
     }
@@ -241,6 +315,7 @@ function animateAndMovePiece(source, target, move, onComplete) {
         document.body.removeChild(animatedPiece);
         movePiece(source, target);  
         playSound(move);
+        updateCapturedPieces();
         if (onComplete) {
             onComplete();
         }
